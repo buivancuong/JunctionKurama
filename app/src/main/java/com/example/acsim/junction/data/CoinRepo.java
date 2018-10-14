@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CoinRepo implements CoinRepository {
 
-    private static CoinRepo instance;
+    private static CoinRepo instance = null;
 
     private Customer customer;
 

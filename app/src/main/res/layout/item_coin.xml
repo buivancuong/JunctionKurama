@@ -15,6 +15,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Coin Type"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,6 +27,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Coin Value"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewItemCoinType"
         app:layout_constraintTop_toTopOf="parent" />

@@ -164,7 +164,7 @@ public class QRScanActivity extends AppCompatActivity {
     @SuppressLint("ShowToast")
     private void setPOST() throws IOException {
 
-        AndroidNetworking.post("http://10.79.1.173:8080/customer/getItemUsingToken")
+        AndroidNetworking.post("http://10.79.1.213:8080/customer/getItemUsingToken")
                 .addBodyParameter("idCard", CoinRepo.getInstance().getCustomerIDCard())
                 .addBodyParameter("itemID",textViewResult.getText().toString())
                 .setTag("test")

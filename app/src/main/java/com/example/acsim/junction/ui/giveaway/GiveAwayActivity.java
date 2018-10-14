@@ -17,6 +17,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.acsim.junction.R;
 import com.example.acsim.junction.data.CoinRepo;
 import com.example.acsim.junction.model.GetItemInfo;
@@ -24,6 +28,8 @@ import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -125,12 +131,24 @@ public class GiveAwayActivity extends AppCompatActivity {
         btn_GiveAway.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GetItemInfo getItemInfo = new GetItemInfo(textViewResult.getText().toString(), CoinRepo.getInstance().getCustomerIDCard());
-                try {
-                    setPOST(getApplicationContext(),getItemInfo.Ob2Json(getItemInfo));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                AndroidNetworking.post("http://10.79.1.213:8080/admin/sendGift")
+                        .addBodyParameter("from", CoinRepo.getInstance().getCustomerIDCard())
+                        .addBodyParameter("to", textViewResult.getText().toString())
+                        .addBodyParameter("value", edt_ValueGA.getText().toString())
+                        .setTag("GiveAway")
+                        .setPriority(Priority.MEDIUM)
+                        .build()
+                        .getAsJSONObject(new JSONObjectRequestListener() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
+                            }
+
+                            @Override
+                            public void onError(ANError anError) {
+                                Toast.makeText(getApplicationContext(), "Ko co get dc j", Toast.LENGTH_LONG).show();
+                            }
+                        });
             }
         });
     }

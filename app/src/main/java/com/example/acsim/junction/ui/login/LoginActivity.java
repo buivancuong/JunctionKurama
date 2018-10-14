@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AndroidNetworking.post("http://10.79.1.173:8080/customer/login")
+                AndroidNetworking.post("http://10.79.1.213:8080/customer/login")
                         .addBodyParameter("username", edt_IDCard.getText().toString())
                         .addBodyParameter("password", edt_Password.getText().toString())
                         .setTag("LOGIN")
@@ -67,13 +67,13 @@ public class LoginActivity extends AppCompatActivity {
                                     JSONObject jsonObjectResponse = new JSONObject(response.toString());
                                     String jsonCustomer = jsonObjectResponse.getString("user");
                                     JSONObject jsonObjectCustomer = new JSONObject(jsonCustomer);
-                                    String idCard = jsonObjectCustomer.getString("IdCard");
-                                    String customerName = jsonObjectCustomer.getString("CustomerName");
+//                                    String idCard = jsonObjectCustomer.getString("IdCard");
+                                    String customerName = jsonObjectCustomer.getString("UserName");
                                     String userID = jsonObjectCustomer.getString("UserID");
-                                    CoinRepo.getInstance().setCustomer(new Customer(idCard, customerName, userID));
-                                    CoinRepo.getInstance().getCustomer().getCoinList().add(new Coin("HCoin", 1000));
-                                    CoinRepo.getInstance().getCustomer().getCoinList().add(new Coin("CCoin", 2000));
-                                    CoinRepo.getInstance().getCustomer().getCoinList().add(new Coin("MCoin", 3000));
+                                    CoinRepo.getInstance().setCustomer(new Customer(userID, customerName, userID));
+                                    CoinRepo.getInstance().getAllCoin().add(new Coin("HCoin", 1000));
+                                    CoinRepo.getInstance().getAllCoin().add(new Coin("CCoin", 2000));
+                                    CoinRepo.getInstance().getAllCoin().add(new Coin("MCoin", 3000));
 
                                     Log.d("status", jsonObjectResponse.getString("status"));
 

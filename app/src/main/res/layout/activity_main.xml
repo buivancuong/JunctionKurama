@@ -11,7 +11,7 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher_round" />
@@ -21,8 +21,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:text="Customer Name"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,20 +34,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:text="ID Card"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewAvatar" />
-
-    <TextView
-        android:id="@+id/textViewUserID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="User ID"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewIDCard" />
 
     <TextView
         android:id="@+id/textViewStringIDCard"
@@ -55,23 +47,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:text="ID Card"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
         app:layout_constraintTop_toBottomOf="@+id/imageViewAvatar" />
-
-    <TextView
-        android:id="@+id/textViewStringUserID"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="User ID"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
-        app:layout_constraintTop_toBottomOf="@+id/textViewStringIDCard" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewCoinList"
@@ -84,19 +66,30 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewStringUserID" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewIDCard" />
 
     <Button
         android:id="@+id/buttongetownqrcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="My Address"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCustomerName" />
+
+    <Button
+        android:id="@+id/buttonShowLog"
+        android:layout_width="122dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="YOUR CODE"
-        android:textSize="8sp"
+        android:text="Show Log"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
+        app:layout_constraintStart_toEndOf="@+id/buttongetownqrcode"
         app:layout_constraintTop_toBottomOf="@+id/textViewCustomerName" />
 
 </android.support.constraint.ConstraintLayout>
